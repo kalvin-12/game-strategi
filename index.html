@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hex Conquer - Strategi Offline</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2c3e50">
+</head>
+<body>
+    <div id="game-container">
+        <header id="game-header">
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="label">Pemain:</span>
+                    <span id="player-gold" class="value">0</span> 💰
+                </div>
+                <div class="stat-item">
+                    <span class="label">Wilayah:</span>
+                    <span id="player-territory" class="value">0</span> 🌍
+                </div>
+            </div>
+            <div id="turn-indicator">Giliran Anda</div>
+        </header>
+
+        <canvas id="game-canvas"></canvas>
+
+        <footer id="game-controls">
+            <button id="end-turn-btn" class="btn primary">Selesai Giliran</button>
+            <div class="tile-info" id="tile-info">Pilih petak untuk melihat info</div>
+        </footer>
+
+        <!-- Modal for Game Over -->
+        <div id="game-over-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2 id="game-over-title">Permainan Selesai</h2>
+                <p id="game-over-message"></p>
+                <button id="restart-btn" class="btn primary">Main Lagi</button>
+            </div>
+        </div>
+
+        <!-- Modal for Tutorial -->
+        <div id="tutorial-modal" class="modal">
+            <div class="modal-content tutorial-content">
+                <h2>Selamat Datang di Hex Conquer!</h2>
+                <div class="tutorial-steps">
+                    <div class="step">
+                        <p>🌍 <strong>Tujuan:</strong> Kuasai seluruh peta atau miliki wilayah terbanyak.</p>
+                    </div>
+                    <div class="step">
+                        <p>💰 <strong>Emas:</strong> Dapatkan emas setiap giliran dari wilayah Anda. Cari petak 💰 untuk bonus besar!</p>
+                    </div>
+                    <div class="step">
+                        <p>⚔️ <strong>Serang:</strong> Klik petak musuh/netral di samping wilayah Anda untuk menyerang (Biaya: 10 emas).</p>
+                    </div>
+                    <div class="step">
+                        <p>🛡️ <strong>Bertahan:</strong> Klik petak sendiri untuk meningkatkan pertahanan (Biaya: 5 emas).</p>
+                    </div>
+                </div>
+                <button id="start-game-btn" class="btn primary">Mulai Bermain</button>
+            </div>
+        </div>
+    </div>
+    <script src="game.js"></script>
+    <script>
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(registration => {
+                    console.log('SW registered: ', registration);
+                }).catch(registrationError => {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
