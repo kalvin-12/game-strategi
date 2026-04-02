@@ -12,13 +12,21 @@
     <div id="game-container">
         <header id="game-header">
             <div class="stats">
-                <div class="stat-item">
-                    <span class="label">Pemain:</span>
-                    <span id="player-gold" class="value">0</span> 💰
+                <div class="stat-group player-stats">
+                    <div class="stat-item">
+                        <span id="player-gold" class="value">0</span> 💰
+                    </div>
+                    <div class="stat-item">
+                        <span id="player-territory" class="value">0</span> 🌍
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <span class="label">Wilayah:</span>
-                    <span id="player-territory" class="value">0</span> 🌍
+                <div class="stat-group enemy-stats">
+                    <div class="stat-item enemy">
+                        <span id="enemy-gold" class="value">0</span> 💰
+                    </div>
+                    <div class="stat-item enemy">
+                        <span id="enemy-territory" class="value">0</span> 🌍
+                    </div>
                 </div>
             </div>
             <div id="turn-indicator">Giliran Anda</div>
@@ -52,15 +60,27 @@
                         <p>💰 <strong>Emas:</strong> Dapatkan emas setiap giliran dari wilayah Anda. Cari petak 💰 untuk bonus besar!</p>
                     </div>
                     <div class="step">
-                        <p>⚔️ <strong>Serang:</strong> Klik petak musuh/netral di samping wilayah Anda untuk menyerang (Biaya: 10 emas).</p>
+                        <p>⚔️ <strong>Serang:</strong> Klik petak musuh/netral di samping wilayah Anda untuk menyerang (Biaya: 8 emas).</p>
                     </div>
                     <div class="step">
-                        <p>🛡️ <strong>Bertahan:</strong> Klik petak sendiri untuk meningkatkan pertahanan (Biaya: 5 emas).</p>
+                        <p>🛡️ <strong>Bertahan:</strong> Klik petak sendiri untuk meningkatkan pertahanan (Biaya: 4 emas).</p>
                     </div>
                 </div>
+
+                <div class="difficulty-selector">
+                    <p><strong>Pilih Kesulitan:</strong></p>
+                    <div class="difficulty-options">
+                        <label class="diff-btn"><input type="radio" name="difficulty" value="easy"> Mudah</label>
+                        <label class="diff-btn"><input type="radio" name="difficulty" value="medium" checked> Sedang</label>
+                        <label class="diff-btn"><input type="radio" name="difficulty" value="hard"> Sulit</label>
+                    </div>
+                </div>
+                
                 <button id="start-game-btn" class="btn primary">Mulai Bermain</button>
             </div>
         </div>
+        
+        <div id="ai-thinking" class="hidden">AI Sedang Berpikir...</div>
     </div>
     <script src="game.js"></script>
     <script>
